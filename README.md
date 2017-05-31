@@ -1,6 +1,7 @@
 # CoTypeDataProcessing
 Data Processing Pipeline for CoType, PLE, AFET
 
+## Description
 It generates the train & test json files for the above three information extraction models as input files. Each line of a json file contains information of a sentence, including entity mentions, relation mentions, etc.
 To generate such json files, you need to provide the following input files (we include examples in ./data folder):
 
