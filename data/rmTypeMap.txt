@@ -1,0 +1,17 @@
+location.country.capital	location.country.capital
+sports.sports_team_location.teams	sports.sports_team_location.teams
+people.deceased_person.place_of_death	people.deceased_person.place_of_death
+location.neighborhood.neighborhood_of	location.neighborhood.neighborhood_of
+sports.sports_team.location	sports.sports_team.location
+people.person.place_of_birth	people.person.place_of_birth
+organization.organization.place_founded	organization.organization.place_founded
+location.location.contains	location.location.contains
+organization.organization.founders	organization.organization.founders
+location.country.administrative_divisions	location.country.administrative_divisions
+business.industry.companies	business.industry.companies
+business.person.company	business.person.company
+people.person.religion	people.person.religion
+people.person.nationality	people.person.nationality
+people.place_lived.person	people.place_lived.person
+people.person.children	people.person.children
+organization.organization.advisors	organization.organization.advisors

@@ -1,0 +1,3 @@
+people.person	PERSON
+organization.organization	ORGANIZATION
+location.location	LOCATION
