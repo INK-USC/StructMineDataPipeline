@@ -1,15 +1,7 @@
 import sys
 import nltk
 from stanza.nlp.corenlp import CoreNLPClient
-import os
-import re
-import glob
-import xml.etree.ElementTree as ET
-from bs4 import BeautifulSoup
-#from textblob import TextBlob
 import json
-import time
-
 
 
 class NLPParser(object):
@@ -94,7 +86,6 @@ grammar = r"""
     {<NBAR><IN><NBAR>}  # Above, connected with in/of/etc...
 """
 cp = nltk.RegexpParser(grammar) #chunk parser
-startTime = time.time()
 articleId = inFile
 with open(inFile, 'r') as fin, open(outFile, 'w') as fout:
   sentId = 0
@@ -106,7 +97,7 @@ with open(inFile, 'r') as fin, open(outFile, 'w') as fout:
     if mentionTypeRequired != 'rm':
       em_line_seg = fin.readline().strip('\r\n').split('\t')
       em_gts = [(em_line_seg[i*2], em_line_seg[i*2+1]) for i in range(len(em_line_seg)/2)]
-    if mentionTypeRequired != 'em':
+      if mentionTypeRequired != 'em':
       rm_line_seg = fin.readline().strip('\r\n').split('\t')
       rm_gts = [(rm_line_seg[i*3], rm_line_seg[i*3+1], rm_line_seg[i*3+2]) for i in range(len(rm_line_seg)/3)]
 

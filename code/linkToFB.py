@@ -1,6 +1,5 @@
 import sys
 import json
-import time
 
 
 def loadTargetTypes(filename):
@@ -34,9 +33,7 @@ targetEMTypes = loadTargetTypes(entityTypesFname)#{'<http://rdf.freebase.com/ns/
 targetRMTypes = loadTargetTypes(relationTypesFname)
 
 
-startTime = time.time()
 with open(mid2typeFname, 'r') as mid2typeFile, open(mid2nameFname, 'r') as mid2nameFile, open(relationTupleFname, 'r') as relationTupleFile:
-  count = 0
   for line in mid2typeFile:
     seg = line.strip('\r\n').split('\t')
     mid = seg[0]
@@ -46,13 +43,8 @@ with open(mid2typeFname, 'r') as mid2typeFile, open(mid2nameFname, 'r') as mid2n
         mid2types[mid].add(targetEMTypes[type])
       else:
         mid2types[mid] = set([targetEMTypes[type]])
-    count += 1
-    if count%1000000 == 0:
-      print(count, len(mid2types))
-  print(len(mid2types))
-  print('finish loading mid2typeFile', time.time()-startTime)
+  print('finish loading mid2typeFile')
 
-  count = 0
   for line in relationTupleFile:
     seg = line.strip('\r\n').split('\t')
     mid1 = seg[0]
@@ -64,11 +56,7 @@ with open(mid2typeFname, 'r') as mid2typeFile, open(mid2nameFname, 'r') as mid2n
         mids2relation[key].add(targetRMTypes[type])
       else:
         mids2relation[key] = set([targetRMTypes[type]])
-    count += 1
-    #if count%1000000 == 0:
-    #  print(count)
-  #print(len(mids2relation))
-  print('finish loading relationTupleFile', time.time()-startTime)
+  print('finish loading relationTupleFile')
 
   for line in mid2nameFile:
     seg = line.strip('\r\n').split('\t')
@@ -80,11 +68,9 @@ with open(mid2typeFname, 'r') as mid2typeFile, open(mid2nameFname, 'r') as mid2n
         name2mids[name].add(mid)
       else:
         name2mids[name] = set([mid])
-  #print(len(name2mids))
-  print('finish loading mid2nameFile', time.time()-startTime)
+  print('finish loading mid2nameFile')
 
 with open(jsonFname, 'r') as fin, open(outFname, 'w') as fout:
-  count = 0
   linkableCt = 0
   for line in fin:
     sentDic = json.loads(line.strip('\r\n'))
@@ -125,6 +111,3 @@ with open(jsonFname, 'r') as fin, open(outFname, 'w') as fout:
       del sentDic['entityMentions']
 
     fout.write(json.dumps(sentDic) + '\n')
-    count += 1
-    if count%1000 == 0:
-      print(count, time.time()-startTime)

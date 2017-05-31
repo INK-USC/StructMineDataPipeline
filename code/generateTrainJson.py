@@ -1,14 +1,7 @@
 import sys
 import nltk
 from stanza.nlp.corenlp import CoreNLPClient
-import os
-import re
-import glob
-import xml.etree.ElementTree as ET
-from bs4 import BeautifulSoup
-#from textblob import TextBlob
 import json
-import time
 
 
 
@@ -94,7 +87,6 @@ grammar = r"""
     {<NBAR><IN><NBAR>}  # Above, connected with in/of/etc...
 """
 cp = nltk.RegexpParser(grammar) #chunk parser
-startTime = time.time()
 with open(inFile, 'r') as fin, open(outFile, 'w') as fout:
   articleId = 0
   for line in fin:
