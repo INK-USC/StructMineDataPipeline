@@ -5,12 +5,12 @@ Data Processing Pipeline for CoType, PLE, AFET
 It generates the train & test json files for the above three information extraction models as input files. Each line of a json file contains information of a sentence, including entity mentions, relation mentions, etc.
 To generate such json files, you need to provide the following input files (we include examples in ./data folder):
 
-*Training:
+* Training:
 Freebase files (download from ???)
 Raw training corpus file (each line as a document)
 Entity & Relation mention target type mapping from freebase type name to target type name
 
-*Test:
+* Test:
 Raw test corpus file with ground truth mention & label pairs with each sentence in the following format: 
 ```
 sentence text.
