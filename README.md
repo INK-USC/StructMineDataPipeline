@@ -6,19 +6,22 @@ It generates the train & test json files for the above three information extract
 To generate such json files, you need to provide the following input files (we include examples in ./data folder):
 
 ### Training:
-1. Freebase files (download from ???)
+1. Freebase files (download from ??? and put the unzipped freebase folder in parallel with code/ and data/ folders)
+  
+    * The freebase folder should contain: 
+    
+      freebase-facts.txt (relation triples in the format of 'id of entity 1, relation type, id of entity 2'); 
+      
+      freebase-mid-name.map (entity id to name map in the format of 'entity id, entity surface name');
+      
+      freebase-mid-type.map (entity id to type map in the format of 'entity id, entity type'). 
 
 2. Raw training corpus file (each line as a document)
 
 3. Entity & Relation mention target type mapping from freebase type name to target type name
 
 ### Test:
-1. Raw test corpus file with ground truth mention & label pairs with each sentence in the following format: 
-```
-sentence text. \newline
-pairs of entity mention and its label, separated by tab (remove this line if only relation mentions are needed) \newline
-triples of relation mention and its label, separated by tab (remove this line if only entity mentions are needed) \newline
-```
+1. Raw test corpus file (each line as a document) 
 
 ## Dependencies
 We will take Ubuntu for example.
