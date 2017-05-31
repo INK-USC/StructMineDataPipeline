@@ -17,9 +17,7 @@ outFname = sys.argv[2]
 
 mentionTypeRequired = sys.argv[3]
 entityTypesFname = sys.argv[4]
-
-if mentionTypeRequired != 'em':
-  relationTypesFname = sys.argv[5]
+relationTypesFname = sys.argv[5]
 
 freebase_dir = sys.argv[6]
 mid2typeFname = freebase_dir+'/freebase-mid-type.map'
@@ -30,8 +28,6 @@ mid2types = {}
 name2mids = {}
 mids2relation = {}
 targetEMTypes = loadTargetTypes(entityTypesFname)#{'<http://rdf.freebase.com/ns/people.person>':'PERSON', '<http://rdf.freebase.com/ns/organization.organization>':'ORGANIZATION', '<http://rdf.freebase.com/ns/location.location>':'LOCATION'}
-targetRMTypes = loadTargetTypes(relationTypesFname)
-
 
 with open(mid2typeFname, 'r') as mid2typeFile, open(mid2nameFname, 'r') as mid2nameFile, open(relationTupleFname, 'r') as relationTupleFile:
   for line in mid2typeFile:
@@ -45,18 +41,20 @@ with open(mid2typeFname, 'r') as mid2typeFile, open(mid2nameFname, 'r') as mid2n
         mid2types[mid] = set([targetEMTypes[type]])
   print('finish loading mid2typeFile')
 
-  for line in relationTupleFile:
-    seg = line.strip('\r\n').split('\t')
-    mid1 = seg[0]
-    type = seg[1].split('/')[-1][:-1]
-    mid2 = seg[2]
-    if type in targetRMTypes and mid1 in mid2types and mid2 in mid2types:
-      key = (mid1, mid2)
-      if key in mids2relation:
-        mids2relation[key].add(targetRMTypes[type])
-      else:
-        mids2relation[key] = set([targetRMTypes[type]])
-  print('finish loading relationTupleFile')
+  if mentionTypeRequired != 'em':
+    targetRMTypes = loadTargetTypes(relationTypesFname)
+    for line in relationTupleFile:
+      seg = line.strip('\r\n').split('\t')
+      mid1 = seg[0]
+      type = seg[1].split('/')[-1][:-1]
+      mid2 = seg[2]
+      if type in targetRMTypes and mid1 in mid2types and mid2 in mid2types:
+        key = (mid1, mid2)
+        if key in mids2relation:
+          mids2relation[key].add(targetRMTypes[type])
+        else:
+          mids2relation[key] = set([targetRMTypes[type]])
+    print('finish loading relationTupleFile')
 
   for line in mid2nameFile:
     seg = line.strip('\r\n').split('\t')
