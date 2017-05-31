@@ -7,20 +7,16 @@ outTrainFile='./data/train.json'
 outTestFile='./data/test.json'
 parseTool='stanford' #'nltk' or 'stanford'
 testOnly=false
-freebaseDir='/shared/data/xren7/EntityLinking/resource'
+freebaseDir='./freebase'
 
 if [ "$testOnly" = false ] ; then
-  echo 'start generating candidate entity mentions'
-  python code/generateTrainJson.py $inTrainFile tmp1.json $parseTool
-  echo 'start linking to freebase'
-  python code/linkToFB.py tmp1.json tmp2.json $mentionType $emTypeMapFile $rmTypeMapFile $freebaseDir
-  echo 'start generating negative examples'
-  python code/getNegRMs.py tmp2.json $outTrainFile
-  echo 'generated the json file'
+  echo 'start generating train json file'
+  python code/generateJson.py $inTrainFile $outTrainFile $parseTool 1 $mentionType $emTypeMapFile $rmTypeMapFile $freebaseDir
+
   echo 'removing tmp files...'
   rm tmp1.json
   rm tmp2.json
 fi
 
 echo 'start generating test json file'
-python code/generateTestJson.py $inTestFile $outTestFile $parseTool $mentionType
+python code/generateJson.py $inTestFile $outTestFile $parseTool 0 $mentionType

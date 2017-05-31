@@ -1,12 +1,4 @@
 Stephen A. Schwarzman , the co-founder of the Blackstone Group , which is in the process of going public , made $ 400 million last year .
-Blackstone Group	ORGANIZATION	Stephen A. Schwarzman	PERSON
-Blackstone Group	Stephen A. Schwarzman	organization.organization.founders
 For Mrs. Clinton , the strategy for reaching black voters at this early stage of the campaign involves strong outreach to black elected officials , business leaders and others , followed by phone calls to reinforce her candidacy from her husband and supporters like Robert L. Johnson , who founded Black Entertainment Television .
-Clinton	PERSON	Robert L. Johnson	PERSON	Black Entertainment Television	ORGANIZATION
-Black Entertainment Television	Robert L. Johnson	organization.organization.founders
 DEAL FOR ` NO DEAL ' CREATOR A group of investors led by John de Mol , one of the founders of Endemol , which pioneered reality television series like '' Big Brother '' and game shows like '' Deal or No Deal , '' agreed to buy a controlling stake in the company .
-John de Mol	PERSON	Endemol	ORGANIZATION
-Endemol	John de Mol	organization.organization.founders
 It 's so hypocritical for any network in this culture to go all puritanical on the subject of condom use when their programming is so salacious , '' said Mark Crispin Miller , a media critic who teaches at New York University . ''
-Mark Crispin Miller	PERSON	New York University	ORGANIZATION
-Mark Crispin Miller	New York University	business.person.company
