@@ -6,7 +6,7 @@ It generates the train & test json files for the above three information extract
 To generate such json files, you need to provide the following input files (we include examples in ./data folder):
 
 ### Training:
-1. Freebase files (download from https://drive.google.com/file/d/0B--ZKWD8ahE4aXhOLXFUeDZBVzA/view?usp=sharing and put the unzipped freebase folder in parallel with code/ and data/ folders)
+1. Freebase files (download from [this link](https://drive.google.com/file/d/0B--ZKWD8ahE4aXhOLXFUeDZBVzA/view?usp=sharing) and put the unzipped freebase folder in parallel with code/ and data/ folders)
   
     * The freebase folder should contain: 
     
