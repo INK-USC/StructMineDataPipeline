@@ -1,5 +1,5 @@
 # StructMineDataPipeline
-Data Processing Pipeline for StructMine tools: CoType, PLE, AFET
+Data Processing Pipeline for StructMine Tools: [CoType](https://github.com/shanzhenren/CoType), [PLE](https://github.com/shanzhenren/PLE), [AFET](https://github.com/shanzhenren/AFET).
 
 ## Description
 It generates the train & test json files for the above three information extraction models as input files. Each line of a json file contains information of a sentence, including entity mentions, relation mentions, etc.
