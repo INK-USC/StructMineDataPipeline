@@ -1,5 +1,5 @@
-# CoTypeDataProcessing
-Data Processing Pipeline for CoType, PLE, AFET
+# StructMineDataPipeline
+Data Processing Pipeline for StructMine tools: CoType, PLE, AFET
 
 ## Description
 It generates the train & test json files for the above three information extraction models as input files. Each line of a json file contains information of a sentence, including entity mentions, relation mentions, etc.
