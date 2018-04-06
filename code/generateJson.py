@@ -4,6 +4,7 @@ from stanza.nlp.corenlp import CoreNLPClient
 import json
 from distantSupervision import linkToFB, getNegRMs
 
+INTERESTED_STANFORD_EM_TYPES = ['PERSON','LOCATION','ORGANIZATION']
 
 class NLPParser(object):
     """
@@ -24,17 +25,20 @@ class NLPParser(object):
             currNERType = 'O'
             currNER = ''
             for token in sent:
+                token_ner = token.ner
+                if token_ner not in INTERESTED_STANFORD_EM_TYPES:
+                  token_ner = 'O'
                 tokens += [token.word]
-                if token.ner == 'O':
+                if token_ner == 'O':
                   if currNER != '':
                     ner.append(currNER.strip())
                   currNER = ''
-                elif token.ner == currNERType:
+                elif token_ner == currNERType:
                   currNER += token.word + ' '
                 else:
                   if currNER != '':
                     ner.append(currNER.strip())
-                  currNERType = token.ner
+                  currNERType = token_ner
                   currNER = token.word + ' '
             if currNER != '':
               ner.append(currNER.strip())
